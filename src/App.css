@@ -18,3 +18,38 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.header {
+  color: white;
+  background-color: #505357;
+  height: 50px;
+  top: 0;
+  margin-bottom: 5px;
+}
+.nav-list {
+  margin: 0 40px;
+}
+.nav-list li {
+  float: right;
+  list-style-type: none;
+  display: inline;
+  padding: 8px;
+  margin-top: 10px
+}
+.logo {
+  float: left;
+  margin: 0 20px
+}
+.books-block {
+  float: left;
+  display: inline-block;
+  width: 48%;
+  height: 100%;
+  border: solid 1px #505357;
+}
+.genres-block {
+  float: right;
+  display: inline-block;
+  width: 48%;
+  height: 100%;
+  border: solid 1px #505357;
+}

@@ -18,8 +18,11 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Genres onSubmit={this.addGenre} />
-        {JSON.stringify(this.state.genres)}
+        <div className="books-block" />
+        <div className="genres-block">
+          <Genres onSubmit={this.addGenre} />
+          {JSON.stringify(this.state.genres)}
+        </div>
       </div>
     );
   }
