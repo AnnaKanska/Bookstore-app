@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import shortid from "shortid";
 
 class Genres extends Component {
   state = {
@@ -13,7 +14,8 @@ class Genres extends Component {
   submitGenre = event => {
     event.preventDefault();
     this.props.onSubmit({
-      name: this.state.name
+      name: this.state.name,
+      id: shortid.generate()
     });
     this.setState({
       name: ""
