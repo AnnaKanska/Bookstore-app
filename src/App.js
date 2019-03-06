@@ -5,12 +5,21 @@ import Genres from "./components/genres";
 
 class App extends Component {
   state = {
+    current: "",
     genres: []
   };
 
-  addGenre = genre => {
+  handleChange = event => {
     this.setState({
-      genres: [genre, ...this.state.genres]
+      current: event.target.value
+    });
+  };
+  handleSubmit = genre => {
+    genre.preventDefault();
+    genre = this.state.current;
+    this.setState({
+      genres: [...this.state.genres, genre],
+      current: ""
     });
   };
 
@@ -18,14 +27,22 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <div className="books-block" />
-        <div className="genres-block">
-          <Genres onSubmit={this.addGenre} />
-          {JSON.stringify(this.state.genres)}
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            name="genre"
+            value={this.state.current}
+            onChange={this.handleChange}
+          />
+          <button type="submit">Add</button>
+        </form>
+        <div>
+          {this.state.genres.map((genre, i) => (
+            <div key={i}>{<Genres name={genre} />} </div>
+          ))}
         </div>
       </div>
     );
   }
 }
-
 export default App;
