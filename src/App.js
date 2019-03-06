@@ -6,7 +6,7 @@ import Genres from "./components/genres";
 class App extends Component {
   state = {
     current: "",
-    genres: []
+    genres: ["Non-ficton", "Comedy", "Sci-fi"]
   };
 
   handleChange = event => {
@@ -18,8 +18,13 @@ class App extends Component {
     genre.preventDefault();
     genre = this.state.current;
     this.setState({
-      genres: [...this.state.genres, genre],
+      genres: [genre, ...this.state.genres],
       current: ""
+    });
+  };
+  handleDelete = i => {
+    this.setState({
+      genres: this.state.genres.filter(genre => genre !== i)
     });
   };
 
@@ -38,7 +43,10 @@ class App extends Component {
         </form>
         <div>
           {this.state.genres.map((genre, i) => (
-            <div key={i}>{<Genres name={genre} />} </div>
+            <div key={i}>
+              {<Genres name={genre} />}
+              <button onClick={() => this.handleDelete(genre)}>x</button>
+            </div>
           ))}
         </div>
       </div>

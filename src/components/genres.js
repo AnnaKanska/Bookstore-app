@@ -9,7 +9,7 @@ class Genres extends Component {
     return (
       <div>
         <ul>
-          <li>{this.state.name}</li>
+          <li>{this.props.name}</li>
         </ul>
       </div>
     );
