@@ -53,3 +53,25 @@
   height: 100%;
   border: solid 1px #505357;
 }
+input{
+  border: solid 2px green
+}
+button{
+  background-color: red
+}
+.genre-list-item{
+  cursor: pointer
+}
+.book-container{
+  width: 48%;
+  float: right;
+  background-color: yellow
+}
+.loading-window {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.loading-window img {
+  margin: auto
+}
