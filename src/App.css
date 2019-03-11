@@ -129,7 +129,7 @@ html {
   width: 42px;
 }
 /* input fields */
-input {
+input, select {
   background-color: rgba(255, 255, 255, 0.2);
   border: none;    
   border-radius: 2px;
@@ -156,6 +156,16 @@ input {
   background-color: rgba(110, 167, 186, 0.8);
   border-radius: 1em;
   margin: 1% auto;
+}
+@media only screen and (max-width: 960px) {
+    .genre-container, .book-container{
+    display: block;
+    width: 100%;
+    margin: 10px auto
+  }
+    .content-container{
+    display: block;
+  }
 }
 .genre-container{
   width: 39%;

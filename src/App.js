@@ -175,15 +175,21 @@ class App extends Component {
                 />
                 <br />
                 <p className="genre-text">genre</p>
-                <input
-                  className="input-book-genre"
-                  type="text"
+                <select
                   name="genre"
                   required
                   value={this.state.currentBook.genre}
+                  className="input-book-genre"
                   onChange={e => this.handleBookChange(e)}
-                  placeholder="..."
-                />
+                >
+                  <option defaultChecked>Select</option>
+                  {this.state.genres.map((genre, i) => (
+                    <option value={genre} key={i}>
+                      {genre}
+                    </option>
+                  ))}
+                </select>
+
                 <button className="submit-book" type="submit">
                   add
                 </button>
@@ -219,7 +225,7 @@ class App extends Component {
                       className="showAll-btn"
                       onClick={() => this.onAllBooks()}
                     >
-                      Show All Books
+                      All Books
                     </button>
                   </div>
                 )}
