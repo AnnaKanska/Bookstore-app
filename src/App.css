@@ -31,8 +31,10 @@ html {
 
 .genre-grid-container {
   display: grid;
+  display: -ms-grid;
   margin: auto;
   grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr;
   grid-template-rows: 40px 20px 20px 20px;
 }
 .add-genre-title {
@@ -41,6 +43,9 @@ html {
   font-size: 30px;
   grid-column-start: 1;
   grid-column-end: 4;
+  -ms-grid-column: 1; 
+  -ms-grid-column-span: 3;
+  -ms-grid-row: 1; 
   grid-row: 1;
   margin: 0;
   justify-self: center;
@@ -48,16 +53,21 @@ html {
 .add-genre-text {
   grid-column: 1;
   grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-row: 3
 }
 .input-genre {
   grid-column: 2;
   grid-row: 3;
+  -ms-grid-column: 2;
+  -ms-grid-row: 3
 }
 
 .input-book-grid-container {
   display: grid;
   margin: auto;
   grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr;
   grid-template-rows: 40px 20px 20px 20px;
 }
 .add-book-title {
@@ -67,33 +77,48 @@ html {
   grid-column-start: 1;
   grid-column-end: 4;
   grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  -ms-grid-row: 1;
   margin: 0;
   justify-self: center;
 }
 .input-book-title{
   grid-column: 2;
   grid-row: 2;
+  -ms-grid-column: 2;
+  -ms-grid-row: 2
 }
 .input-book-price{
   grid-column: 2;
   grid-row: 3;
+  -ms-grid-column: 2;
+  -ms-grid-row: 3
 }
 .input-book-genre{
   grid-column: 2;
   grid-row: 4;
+  -ms-grid-column: 2;
+  -ms-grid-row: 4
 }
 
 .title-text{
   grid-column: 1;
   grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-row: 2
 }
 .price-text{
   grid-column: 1;
   grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-row: 3
 }
 .genre-text{
   grid-column: 1;
   grid-row: 4;
+  -ms-grid-column: 1;
+  -ms-grid-row: 4
 }
 .add-genre-text, .title-text, .price-text, .genre-text {
   font-family: 'Raleway', sans-serif;
@@ -105,6 +130,9 @@ html {
 .submit-genre, .submit-book {
   grid-column: 3;
   grid-row: 2 / 4;
+  -ms-grid-column: 3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
   display: block;
   margin: 5%;
   height: 35px;
@@ -213,10 +241,11 @@ h2 {
   font-size: 30px;
 }
 
-
 .book-grid {
   width: 100%;
   display: inline-grid;
+  display: -ms-grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr
 }
 .book-grid-item{
