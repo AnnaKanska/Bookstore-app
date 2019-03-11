@@ -7,7 +7,7 @@ import Loading from "./components/loading";
 class App extends Component {
   state = {
     currentGenre: "",
-    genres: ["Non-fiction", "Comedy", "Sci-fi"],
+    genres: ["Classics", "Comedy", "Nonfiction"],
     currentBook: {
       name: "",
       price: 0,
@@ -15,23 +15,24 @@ class App extends Component {
     },
     books: [
       {
-        name: "Biography of Anne Frank",
-        price: 2.99,
-        genre: "Non-fiction"
+        name: "1984",
+        price: 5.99,
+        genre: "Classics"
       },
       {
-        name: "Encylopedia of Germany",
+        name: "Pride and Prejudice",
         price: 2.99,
-        genre: "Non-fiction"
+        genre: "Classics"
       },
       {
-        name: "Jerry Seinfeld",
-        price: 2.99,
+        name: "The Cactus",
+        price: 7.99,
         genre: "Comedy"
       }
     ],
     selectedGenreIndex: 0,
-    loading: false
+    loading: false,
+    allBooks: false
   };
 
   handleChange = event => {
@@ -65,7 +66,8 @@ class App extends Component {
 
   loadGenre = i => {
     this.setState({
-      selectedGenreIndex: i
+      selectedGenreIndex: i,
+      allBooks: false
     });
   };
 
@@ -109,87 +111,149 @@ class App extends Component {
     }, 500);
   };
 
+  onAllBooks = () => {
+    this.setState({
+      allBooks: true
+    });
+  };
+
   render() {
     return (
       <div>
         <header className="header">
           <div className="logo">
-            <img src={logo} width="100" height="50" alt="two books" />
+            <img src={logo} alt="two books" />
           </div>
-          <div className="genre-input">
-            <form onSubmit={this.handleSubmit}>
-              <input
-                type="text"
-                name="genre"
-                value={this.state.currentGenre}
-                onChange={this.handleChange}
-              />
-              <button type="submit">Add</button>
-            </form>
-          </div>
-          <div className="book-input">
-            <form onSubmit={this.handleAddBook}>
-              <input
-                type="text"
-                name="name"
-                value={this.state.currentBook.name}
-                onChange={e => this.handleBookChange(e)}
-                placeholder="title"
-              />
-              <input
-                type="number"
-                name="price"
-                value={this.state.currentBook.price}
-                onChange={e => this.handleBookChange(e)}
-              />
-              <input
-                type="text"
-                name="genre"
-                value={this.state.currentBook.genre}
-                onChange={e => this.handleBookChange(e)}
-                placeholder="genre"
-              />
-              <button type="submit">submit</button>
-            </form>
+          <div className="header-blocks-container">
+            <div className="header-block-1">
+              <form
+                className="genre-grid-container"
+                onSubmit={this.handleSubmit}
+              >
+                <h2 className="add-genre-title">Add Genre</h2>
+                <p className="add-genre-text">new genre</p>
+                <input
+                  className="input-genre"
+                  type="text"
+                  name="genre"
+                  required
+                  value={this.state.currentGenre}
+                  onChange={this.handleChange}
+                  placeholder="..."
+                />
+                <button className="submit-genre" type="submit">
+                  add
+                </button>
+              </form>
+            </div>
+            <div className="header-block-2">
+              <form
+                className="input-book-grid-container"
+                onSubmit={this.handleAddBook}
+              >
+                <h2 className="add-book-title">Add Book</h2>
+                <p className="title-text">title</p>
+                <input
+                  className="input-book-title"
+                  type="text"
+                  name="name"
+                  required
+                  value={this.state.currentBook.name}
+                  onChange={e => this.handleBookChange(e)}
+                  placeholder="..."
+                />
+                <br />
+                <p className="price-text">price</p>
+                <input
+                  className="input-book-price"
+                  type="number"
+                  min="0"
+                  step=".10"
+                  name="price"
+                  value={this.state.currentBook.price}
+                  onChange={e => this.handleBookChange(e)}
+                />
+                <br />
+                <p className="genre-text">genre</p>
+                <input
+                  className="input-book-genre"
+                  type="text"
+                  name="genre"
+                  required
+                  value={this.state.currentBook.genre}
+                  onChange={e => this.handleBookChange(e)}
+                  placeholder="..."
+                />
+                <button className="submit-book" type="submit">
+                  add
+                </button>
+              </form>
+            </div>
           </div>
         </header>
-        <div>
+        <div className="main-content-container">
           {this.state.loading ? (
             <Loading />
           ) : (
-            <div>
-              <div className="all-genres">
+            <div className="content-container">
+              <div className="genre-container">
+                <h2>Browse by genre</h2>
                 {this.state.genres.map((genre, i) => (
-                  <div key={i} onClick={() => this.loadGenre(i)}>
-                    {genre}
-                    <button onClick={() => this.handleDelete(genre)}>
-                      Delete
+                  <div
+                    className="each-genre"
+                    key={i}
+                    onClick={() => this.loadGenre(i)}
+                  >
+                    <h4>{genre}</h4>
+                    <button
+                      className="delete-btn"
+                      onClick={() => this.handleDelete(genre)}
+                    >
+                      delete
                     </button>
                   </div>
                 ))}
+                {this.state.allBooks ? null : (
+                  <div>
+                    <button
+                      className="showAll-btn"
+                      onClick={() => this.onAllBooks()}
+                    >
+                      Show All Books
+                    </button>
+                  </div>
+                )}
               </div>
               <div className="book-container">
-                Books by genre:
-                <div>
-                  <h1>{this.state.genres[this.state.selectedGenreIndex]}</h1>
-                  {this.state.books
-                    .filter(
-                      book =>
-                        book.genre ===
-                        this.state.genres[this.state.selectedGenreIndex]
-                    )
-                    .map((book, i) => (
-                      <div key={i}>
-                        {book.name}
-                        <button onClick={() => this.handleBookDelete(book)}>
-                          Delete book
-                        </button>
-                      </div>
-                    ))}
-                </div>
-              </div>
-              <div className="all-books">
-                <AllBooks books={this.state.books} />
+                {this.state.allBooks ? (
+                  <AllBooks books={this.state.books} />
+                ) : (
+                  <div>
+                    <h2>{this.state.genres[this.state.selectedGenreIndex]}</h2>
+                    <div className="book-grid">
+                      {this.state.books
+                        .filter(
+                          book =>
+                            book.genre ===
+                            this.state.genres[this.state.selectedGenreIndex]
+                        )
+                        .map((book, i) => (
+                          <div className="book-grid-item" key={i}>
+                            <h4>{book.name}</h4>
+                            <p>price: {book.price} €</p>
+                            <p>{book.genre}</p>
+                            <hr />
+                            <button
+                              className="delete-btn"
+                              onClick={() => this.handleBookDelete(book)}
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           )}

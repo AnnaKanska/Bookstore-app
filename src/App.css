@@ -1,77 +1,241 @@
-.App {
-  text-align: center;
+html {
+  background-color: rgb(230, 230, 230);
+  font-family: 'Thasadith', sans-serif;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: black;
-  min-height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+/* general header */
 .header {
   color: white;
   background-color: #505357;
-  height: 50px;
+  height: fit-content;
   top: 0;
   margin-bottom: 5px;
+  width: 100%
 }
-.nav-list {
-  margin: 0 40px;
-}
-.nav-list li {
-  float: right;
-  list-style-type: none;
-  display: inline;
-  padding: 8px;
-  margin-top: 10px
-}
-.logo {
-  float: left;
-  margin: 0 20px
-}
-.books-block {
-  float: right;
-  display: inline-block;
-  width: 48%;
-  height: 100%;
-  border: solid 1px #505357;
-}
-.genres-block {
+
+.logo img{
+  max-width: 200px;
+  max-height: 20%;
   float: left;
   display: inline-block;
-  width: 48%;
+  padding: 10px
+}
+.header-blocks-container {
+  background-image: url("./img/transparent-background.png");
+  display: block;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.header-block-1, .header-block-2{
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+
+
+/* genre grid */
+.genre-grid-container {
+  display: grid;
+  margin: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 40px 20px 20px 20px;
+}
+.add-genre-title {
+  font-family: 'Cookie', cursive;
+  letter-spacing: 2px;
+  font-size: 30px;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row: 1;
+  margin: 0;
+  justify-self: center;
+}
+.add-genre-text {
+  grid-column: 1;
+  grid-row: 3;
+}
+.input-genre {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+/* book grid */
+.input-book-grid-container {
+  display: grid;
+  margin: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 40px 20px 20px 20px;
+}
+.add-book-title {
+  font-family: 'Cookie', cursive;
+  letter-spacing: 2px;
+  font-size: 30px;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row: 1;
+  margin: 0;
+  justify-self: center;
+}
+.input-book-title{
+  grid-column: 2;
+  grid-row: 2;
+}
+.input-book-price{
+  grid-column: 2;
+  grid-row: 3;
+}
+.input-book-genre{
+  grid-column: 2;
+  grid-row: 4;
+}
+
+.title-text{
+  grid-column: 1;
+  grid-row: 2;
+}
+.price-text{
+  grid-column: 1;
+  grid-row: 3;
+}
+.genre-text{
+  grid-column: 1;
+  grid-row: 4;
+}
+.add-genre-text, .title-text, .price-text, .genre-text {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  text-align: right;
+  margin: 0;
+}
+
+.submit-genre, .submit-book {
+  grid-column: 3;
+  grid-row: 2 / 4;
+  display: block;
+  margin: 5%;
+  height: 35px;
+  width: 35px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-family: 'Cookie', cursive;
+  font-size: 18px;
+  border-radius: 50%;
+  border: 1px dotted white;
+  justify-self: center;
+}
+.submit-genre:hover, .submit-book:hover {
+  border: 2px dotted white;
+  height: 42px;
+  width: 42px;
+}
+/* input fields */
+input {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;    
+  border-radius: 2px;
+  margin-bottom: 2px;
+  width: 70%;
+  justify-self: center
+}
+::placeholder {
+  color: white;
+  letter-spacing: 2px;
+
+}
+
+/* CONTENT */
+.main-content-container{}
+
+
+.content-container{
+  display: flex;
   height: 100%;
-  border: solid 1px #505357;
 }
-input{
-  border: solid 2px green
+.genre-container, .book-container{
+  display: inline-block;
+  background-color: rgba(110, 167, 186, 0.8);
+  border-radius: 1em;
+  margin: 1% auto;
 }
-button{
-  background-color: red
-}
-.genre-list-item{
-  cursor: pointer
+.genre-container{
+  width: 39%;
 }
 .book-container{
-  width: 48%;
-  float: right;
-  background-color: yellow
+  width: 59%;
 }
-.loading-window {
+.each-genre h4{
+  cursor: pointer; 
+  display: inline-block;
+  margin: 5px;
+  padding-left: 20px;
+}
+
+.delete-btn {
+  display: inline-block;
+  margin-left: 20px;
+  color: rgb(230, 230, 230);
+
+  font-size: 10px;
+  background: none;
+  border: none;
+}
+.showAll-btn {
+  display: block;
+  margin: 30px 5px 15px 25px;
+  padding: 8px;
+  color: rgb(230, 230, 230);
+  font-family: 'Raleway', sans-serif;
+  font-size: 8px;
+  background: none;
+  border: 1px dotted rgb(230, 230, 230);
+  border-radius: 2px;
+}
+h2 {
+  margin: 0 5px 15px 5px;
+  padding-left: 20px;
+  font-size: 30px;
+}
+
+/* book display */
+.book-grid {
   width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr
 }
-.loading-window img {
-  margin: auto
+.book-grid-item{
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  margin: 15px;
+  padding: 10px;
+  word-wrap: break-word;
 }
+.book-grid-item h4 {
+  font-family: 'Thasadith', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  font-size: 18px;
+}
+hr {
+  width: 100%;
+  margin-top: 40px;
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+.book-grid-item .delete-btn {
+  margin-left: 33%;
+}
+
+.all-book-item {
+  width: 70%;
+  margin: 10px auto;
+  border-radius: 2px;
+  padding-left: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.all-book-item > h5, p {
+  margin: 3px
+}
+
+@import url('https://fonts.googleapis.com/css?family=Cookie|Raleway|Thasadith:400,700');
