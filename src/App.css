@@ -2,7 +2,6 @@ html {
   background-color: rgb(230, 230, 230);
   font-family: 'Thasadith', sans-serif;
 }
-/* general header */
 .header {
   color: white;
   background-color: #505357;
@@ -11,7 +10,6 @@ html {
   margin-bottom: 5px;
   width: 100%
 }
-
 .logo img{
   max-width: 200px;
   max-height: 20%;
@@ -31,9 +29,6 @@ html {
   display: inline-block;
 }
 
-
-
-/* genre grid */
 .genre-grid-container {
   display: grid;
   margin: auto;
@@ -59,7 +54,6 @@ html {
   grid-row: 3;
 }
 
-/* book grid */
 .input-book-grid-container {
   display: grid;
   margin: auto;
@@ -128,7 +122,7 @@ html {
   height: 42px;
   width: 42px;
 }
-/* input fields */
+
 input, select {
   background-color: rgba(255, 255, 255, 0.2);
   border: none;    
@@ -143,19 +137,17 @@ input, select {
 
 }
 
-/* CONTENT */
-.main-content-container{}
-
-
 .content-container{
   display: flex;
   height: 100%;
 }
 .genre-container, .book-container{
+  position: relative;
   display: inline-block;
   background-color: rgba(110, 167, 186, 0.8);
   border-radius: 1em;
   margin: 1% auto;
+   min-height: 200px;
 }
 @media only screen and (max-width: 960px) {
     .genre-container, .book-container{
@@ -173,6 +165,9 @@ input, select {
 .book-container{
   width: 59%;
 }
+.list-of-genres{
+  padding-bottom: 60px
+}
 .each-genre h4{
   cursor: pointer; 
   display: inline-block;
@@ -184,29 +179,41 @@ input, select {
   display: inline-block;
   margin-left: 20px;
   color: rgb(230, 230, 230);
-
   font-size: 10px;
   background: none;
   border: none;
+  cursor: pointer;
+}
+.delete-btn:hover {
+  color: #4D6873;
+  font-size: 14px;
 }
 .showAll-btn {
   display: block;
   margin: 30px 5px 15px 25px;
-  padding: 8px;
+  padding: 8px 20px;
   color: rgb(230, 230, 230);
   font-family: 'Raleway', sans-serif;
-  font-size: 8px;
+  font-size: 15px;
   background: none;
   border: 1px dotted rgb(230, 230, 230);
   border-radius: 2px;
+  position: absolute;
+  bottom: 0;
+  cursor: pointer;
 }
+.showAll-btn:hover {
+  background-color: rgba(230, 230, 230, 0.7);
+  color: rgba(110, 167, 186, 0.8)
+}
+
 h2 {
   margin: 0 5px 15px 5px;
   padding-left: 20px;
   font-size: 30px;
 }
 
-/* book display */
+
 .book-grid {
   width: 100%;
   display: inline-grid;
@@ -246,6 +253,13 @@ hr {
 }
 .all-book-item > h5, p {
   margin: 3px
+}
+.loading-window {
+  width: 100%;
+}
+.loading-window img {
+  width: 100px;
+  margin: 6% 48%;
 }
 
 @import url('https://fonts.googleapis.com/css?family=Cookie|Raleway|Thasadith:400,700');

@@ -204,21 +204,23 @@ class App extends Component {
             <div className="content-container">
               <div className="genre-container">
                 <h2>Browse by genre</h2>
-                {this.state.genres.map((genre, i) => (
-                  <div
-                    className="each-genre"
-                    key={i}
-                    onClick={() => this.loadGenre(i)}
-                  >
-                    <h4>{genre}</h4>
-                    <button
-                      className="delete-btn"
-                      onClick={() => this.handleDelete(genre)}
+                <div className="list-of-genres">
+                  {this.state.genres.map((genre, i) => (
+                    <div
+                      className="each-genre"
+                      key={i}
+                      onClick={() => this.loadGenre(i)}
                     >
-                      delete
-                    </button>
-                  </div>
-                ))}
+                      <h4>{genre}</h4>
+                      <button
+                        className="delete-btn"
+                        onClick={() => this.handleDelete(genre)}
+                      >
+                        delete
+                      </button>
+                    </div>
+                  ))}
+                </div>
                 {this.state.allBooks ? null : (
                   <div>
                     <button
@@ -253,7 +255,7 @@ class App extends Component {
                               className="delete-btn"
                               onClick={() => this.handleBookDelete(book)}
                             >
-                              Delete
+                              delete
                             </button>
                           </div>
                         ))}
