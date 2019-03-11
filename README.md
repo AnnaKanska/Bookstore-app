@@ -10,4 +10,4 @@ The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
 
-Developed by Anna Kanska as a FA Technical Test for Beezy# Bookstore-app
+Developed by Anna Kanska as a FA Technical Test for Beezy
